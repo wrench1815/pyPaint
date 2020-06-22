@@ -1,10 +1,10 @@
 # pyPaint
 
-A Paint program using Python 3 and tKinter
+A Paint program using Python 3 and Tkinter
 
 # Libraries used
 
-This Project uses Python 3.8 along with an inbuilt module called tKinter. Although This project is build in Python version 3.8.3, but it will work with any Python 3 version. Unless there any changes to the tKinter Module.
+This Project uses Python 3.8 along with an inbuilt module called Tkinter. Although This project is build in Python version 3.8.3, but it will work with any Python 3 version. Unless there any changes to the Tkinter Module.
 
 # How to Run on your Machine
 
