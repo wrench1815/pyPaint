@@ -23,8 +23,14 @@ def draw(e):
     # Stopping Axis
     x2, y2 = e.x + 1, e.y + 1
     # Draw on Canvas
-    root_canvas.create_line(x1, y1, x2, y2, fill = brush_colour, width = brush_size, capstyle = brush_type,
-                            smooth = True)
+    root_canvas.create_line(x1,
+                            y1,
+                            x2,
+                            y2,
+                            fill=brush_colour,
+                            width=brush_size,
+                            capstyle=brush_type,
+                            smooth=True)
 
 
 def change_brush_size():
@@ -34,21 +40,25 @@ def change_brush_size():
 wt = 600
 ht = 400
 
-root_canvas = Canvas(root, width = wt, height = ht, bg = "white")
-root_canvas.pack(pady = 20)
+root_canvas = Canvas(root, width=wt, height=ht, bg="white")
+root_canvas.pack(pady=20)
 
 root_canvas.bind('<B1-Motion>', draw)
 
 # Brush Options Frame
 brush_options_frame = Frame(root)
-brush_options_frame.pack(pady = 20)
+brush_options_frame.pack(pady=20)
 
 # Brush Size
-brush_size_frame = LabelFrame(brush_options_frame, text = "Brush Size")
-brush_size_frame.grid(row = 0, column = 0, padx = 50)
+brush_size_frame = LabelFrame(brush_options_frame, text="Brush Size")
+brush_size_frame.grid(row=0, column=0, padx=50)
 
 # Size Slider
-brush_size_slider = ttk.Scale(brush_size_frame, from_ = 1, Button = 100, command = change_brush_size, orient = VERTICAL,
-                              value = 0)
-brush_size_slider.pack(pady = 10, padx = 10)
+brush_size_slider = ttk.Scale(brush_size_frame,
+                              from_=1,
+                              Button=100,
+                              command=change_brush_size,
+                              orient=VERTICAL,
+                              value=0)
+brush_size_slider.pack(pady=10, padx=10)
 root.mainloop()
