@@ -1,3 +1,4 @@
 # Ignore Project Data Folders
 /py_modules
 /.vscode
+/.idea/
