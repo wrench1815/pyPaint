@@ -33,8 +33,8 @@ def draw(e):
                             smooth=True)
 
 
-def change_brush_size():
-    pass
+def change_brush_size(pos_return):
+    brush_size_slider_label.config(text=int(brush_size_slider.get()))
 
 
 wt = 600
@@ -46,7 +46,7 @@ root_canvas.pack(pady=20)
 root_canvas.bind('<B1-Motion>', draw)
 
 # Brush Options Frame
-brush_options_frame = Frame(root)
+brush_options_frame = Frame(root, bg="white")
 brush_options_frame.pack(pady=20)
 
 # Brush Size
@@ -56,9 +56,14 @@ brush_size_frame.grid(row=0, column=0, padx=50)
 # Size Slider
 brush_size_slider = ttk.Scale(brush_size_frame,
                               from_=1,
-                              Button=100,
+                              to=100,
                               command=change_brush_size,
                               orient=VERTICAL,
-                              value=0)
+                              value=20)
 brush_size_slider.pack(pady=10, padx=10)
+
+# Brush Size Slider Label
+brush_size_slider_label = Label(brush_size_frame, text=brush_size_slider.get())
+brush_size_slider_label.pack(pady=5)
+
 root.mainloop()
