@@ -11,5 +11,4 @@
 # if using some other name
 # to prevent it being included
 # in GitHub Repo
-pyPaint.spec
-pyPaint-beta-0.1.spec
+pyPaint-v0.1-beta.spec
