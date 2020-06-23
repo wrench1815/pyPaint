@@ -5,18 +5,23 @@ File : main.py
 """
 from tkinter import *
 import tkinter.ttk as ttk
+from tkinter import colorchooser as cs
+from tkinter import filedialog as fd
+from tkinter import messagebox
+import os
+from PIL import Image, ImageDraw, ImageGrab, ImageTk
+import PIL
 
 root = Tk()
 root.title("pyPaint")
 root.geometry("800x800")
 
+brush_color = "black"
+
 
 def draw(e):
     # Brush Parameters
-    brush_colour = 'green'
     brush_size = int(brush_size_slider.get())
-    # Types Available:- BUTT, ROUND, PROJECTING
-    brush_type_canvas = ROUND
 
     # Starting Axis
     x1, y1 = e.x - 1, e.y - 1
@@ -27,15 +32,56 @@ def draw(e):
                             y1,
                             x2,
                             y2,
-                            fill=brush_colour,
+                            fill=brush_color,
                             width=brush_size,
-                            capstyle=brush_type_canvas,
+                            capstyle=brush_type.get(),
                             smooth=True)
 
 
 # function changes brush width using Slider values
 def change_brush_size(pos_return):
     brush_size_slider_label.config(text=int(brush_size_slider.get()))
+
+
+# Change Brush Color
+def change_brush_color():
+    global brush_color
+    brush_color = "black"
+    brush_color = cs.askcolor(color=brush_color)[1]
+
+
+# Chnage Canvas Color
+def change_canvas_color():
+    canvas_color = "black"
+    canvas_color = cs.askcolor(color=canvas_color)[1]
+    root_canvas.config(bg=canvas_color)
+
+
+#  Clear Screen
+def clear_screen():
+    root_canvas.delete(ALL)
+    root_canvas.config(bg="white")
+
+
+#  Save to png
+def save_to_png():
+    picture = fd.asksaveasfilename(initialdir=os.getcwd(),
+                                   filetypes=(("png files", "*.png"),
+                                              ("all files", "*.*")))
+    if picture.endswith('.png'):
+        pass
+    else:
+        picture = picture + '.png'
+
+    if picture:
+        x = root.winfo_x() + root_canvas.winfo_x()
+        y = root.winfo_y() + root_canvas.winfo_y()
+        x1 = x + root_canvas.winfo_width()
+        y1 = y + root_canvas.winfo_height()
+        ImageGrab.grab().crop((x, y, x1, y1)).save(picture)
+
+        # Sucess Box
+        messagebox.showinfo("Image Saved", "Image Saved Successfully")
 
 
 # Dimensions of Canvas
@@ -94,6 +140,33 @@ brush_type_radio3 = Radiobutton(brush_type_frame,
 brush_type_radio1.pack(anchor=W)
 brush_type_radio2.pack(anchor=W)
 brush_type_radio3.pack(anchor=W)
+
+# Change Colors
+change_colors_frame = LabelFrame(brush_options_frame, text="Change Colors")
+change_colors_frame.grid(row=0, column=2)
+
+# Change Brush Color Button
+brush_color_button = Button(change_colors_frame,
+                            text="Brush Color",
+                            command=change_brush_color)
+brush_color_button.pack(padx=10, pady=10)
+
+canvas_color_button = Button(change_colors_frame,
+                             text="Canvas Color",
+                             command=change_canvas_color)
+canvas_color_button.pack(padx=10, pady=10)
+
+# Program Options
+options_frame = LabelFrame(brush_options_frame, text="Program Options")
+options_frame.grid(row=0, column=3, padx=10)
+
+# Clear Screen
+clear_button = Button(options_frame, text="Clear Screen", command=clear_screen)
+clear_button.pack(padx=10, pady=10)
+
+# Save Image
+save_button = Button(options_frame, text="Save png", command=save_to_png)
+save_button.pack(padx=10, pady=10)
 
 # Repeat the actions
 root.mainloop()

@@ -2,3 +2,14 @@
 /py_modules
 /.vscode
 /.idea
+/__pycache__
+/build
+/dist
+
+# Build Specific Files
+# Add them with each build
+# if using some other name
+# to prevent it being included
+# in GitHub Repo
+pyPaint.spec
+pyPaint-beta-0.1.spec
