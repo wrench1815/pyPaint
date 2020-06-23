@@ -8,7 +8,9 @@ This Project uses Python 3.8 along with an inbuilt module called Tkinter. Althou
 
 # How to Run on your Machine
 
-For the Time being, there is no build Available and this Project is still '**Work in Progress**'. Others can simply clone the repo and run the Project.
+Download the Windows Executable from [releases Page](https://github.com/wrench1815/pyPaint/releases)
+
+Or if you wish to build it on your own or try editting code etc, follow below steps.
 
 ## Steps to Setup Working Dev Environment
 
@@ -41,4 +43,12 @@ For the Time being, there is no build Available and this Project is still '**Wor
    ```
 
 5. Check for any updates available using `pip` if required
-6. Use as you Please.
+6. Now run by simply using these Commands
+
+   ```shell
+   # for windows use py
+   py -3.8 main.py
+
+   #for MacOS or Linux use python
+   python3.8 main.py
+   ```
