@@ -52,3 +52,7 @@ Or if you wish to build it on your own or try editting code etc, follow below st
    #for MacOS or Linux use python
    python3.8 main.py
    ```
+
+# License
+
+This Project is Licensed Unlicensed. It means You are free to do whatever you want with the code and use wherever you want to.
