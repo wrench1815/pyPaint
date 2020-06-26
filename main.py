@@ -14,7 +14,7 @@ import PIL
 
 root = Tk()
 root.title("pyPaint")
-root.geometry("800x800")
+root.geometry('800x700')
 
 brush_color = "black"
 
