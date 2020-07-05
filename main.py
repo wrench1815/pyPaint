@@ -85,10 +85,6 @@ def save_to_png():
         messagebox.showinfo("Image Saved", "Image Saved Successfully")
 
 
-# Dimensions of Canvas
-# wt = 600
-# ht = 400
-
 root_canvas = Canvas(root,
                      width=root.winfo_reqwidth(),
                      height=root.winfo_reqheight(),
