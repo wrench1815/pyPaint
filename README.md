@@ -65,12 +65,15 @@ Or if you wish to build it on your own or try editing code etc, follow below ste
 Assuming how the Dev Environment is setup, either as above or by your own liking, and all the requirements are installed, the binary could be built by executing following commands.
 
 ```shell
-pyinstaller --onefile main.py --name pyPaint-vx.x --clean
+pyinstaller --onefile --windowed --cleanmain.py --name pyPaint-vx.x --clean
+# vx.x is the version number
 ```
 
 `--onefile` to create a single file binary
 
 `--name` to specify the name for the binary, like version number etc with the binary's name
+
+`--windowed` to tell pyinstaller to make a GUI build not CLI
 
 `--clean` to clear the previous cache of the build
 
