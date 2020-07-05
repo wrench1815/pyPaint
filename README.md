@@ -65,7 +65,7 @@ Or if you wish to build it on your own or try editing code etc, follow below ste
 Assuming how the Dev Environment is setup, either as above or by your own liking, and all the requirements are installed, the binary could be built by executing following commands.
 
 ```shell
-pyinstaller --onefile main.py --name pyPaint-v1.0 --clean
+pyinstaller --onefile main.py --name pyPaint-vx.x --clean
 ```
 
 `--onefile` to create a single file binary
@@ -76,4 +76,4 @@ pyinstaller --onefile main.py --name pyPaint-v1.0 --clean
 
 # License
 
-This Project is Licensed <b>Unlicensed</b>. It means You are free to do whatever you want with the code and use wherever you want to.
+This Project is Licensed **Unlicensed**. It means You are free to do whatever you want with the code and use wherever you want to.
