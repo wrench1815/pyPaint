@@ -14,7 +14,8 @@ import PIL
 
 root = Tk()
 root.title("pyPaint")
-root.geometry('800x700')
+root.minsize(800, 700)
+# root.geometry('800x700')
 
 brush_color = "black"
 
@@ -50,7 +51,7 @@ def change_brush_color():
     brush_color = cs.askcolor(color=brush_color)[1]
 
 
-# Chnage Canvas Color
+# Change Canvas Color
 def change_canvas_color():
     canvas_color = "black"
     canvas_color = cs.askcolor(color=canvas_color)[1]
@@ -74,8 +75,8 @@ def save_to_png():
         picture = picture + '.png'
 
     if picture:
-        x = root.winfo_x() + root_canvas.winfo_x()
-        y = root.winfo_y() + root_canvas.winfo_y()
+        x = root.winfo_rootx() + root_canvas.winfo_x()
+        y = root.winfo_rooty() + root_canvas.winfo_y()
         x1 = x + root_canvas.winfo_width()
         y1 = y + root_canvas.winfo_height()
         ImageGrab.grab().crop((x, y, x1, y1)).save(picture)
@@ -85,11 +86,14 @@ def save_to_png():
 
 
 # Dimensions of Canvas
-wt = 600
-ht = 400
+# wt = 600
+# ht = 400
 
-root_canvas = Canvas(root, width=wt, height=ht, bg="white")
-root_canvas.pack(pady=20)
+root_canvas = Canvas(root,
+                     width=root.winfo_reqwidth(),
+                     height=root.winfo_reqheight(),
+                     bg="white")
+root_canvas.pack(fill=BOTH, expand=YES, pady=20)
 
 # Bind draw action to left click + Drag
 root_canvas.bind('<B1-Motion>', draw)
