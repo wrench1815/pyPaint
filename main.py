@@ -3,6 +3,7 @@ Author : Hardeep Kumar
 Created On : Sat Jun 20 2020
 File : main.py
 """
+
 from tkinter import *
 import tkinter.ttk as ttk
 from tkinter import colorchooser as cs
@@ -85,6 +86,11 @@ def save_to_png():
         messagebox.showinfo("Image Saved", "Image Saved Successfully")
 
 
+# Exit pyPaint
+def exit_pyPaint():
+    root.quit()
+
+
 root_canvas = Canvas(root,
                      width=root.winfo_reqwidth(),
                      height=root.winfo_reqheight(),
@@ -142,31 +148,67 @@ brush_type_radio2.pack(anchor=W)
 brush_type_radio3.pack(anchor=W)
 
 # Change Colors
-change_colors_frame = LabelFrame(brush_options_frame, text="Change Colors")
-change_colors_frame.grid(row=0, column=2)
+# change_colors_frame = LabelFrame(brush_options_frame, text="Change Colors")
+# change_colors_frame.grid(row=0, column=2)
 
 # Change Brush Color Button
-brush_color_button = Button(change_colors_frame,
-                            text="Brush Color",
-                            command=change_brush_color)
-brush_color_button.pack(padx=10, pady=10)
+# brush_color_button = Button(change_colors_frame,
+#                             text="Brush Color",
+#                             command=change_brush_color)
+# brush_color_button.pack(padx=10, pady=10)
 
-canvas_color_button = Button(change_colors_frame,
-                             text="Canvas Color",
-                             command=change_canvas_color)
-canvas_color_button.pack(padx=10, pady=10)
+# canvas_color_button = Button(change_colors_frame,
+#                              text="Canvas Color",
+#                              command=change_canvas_color)
+# canvas_color_button.pack(padx=10, pady=10)
 
-# Program Options
-options_frame = LabelFrame(brush_options_frame, text="Program Options")
-options_frame.grid(row=0, column=3, padx=10)
+# # Program Options
+# options_frame = LabelFrame(brush_options_frame, text="Program Options")
+# options_frame.grid(row=0, column=3, padx=10)
 
-# Clear Screen
-clear_button = Button(options_frame, text="Clear Screen", command=clear_screen)
-clear_button.pack(padx=10, pady=10)
+# # Clear Screen
+# clear_button = Button(options_frame, text="Clear Screen", command=clear_screen)
+# clear_button.pack(padx=10, pady=10)
 
-# Save Image
-save_button = Button(options_frame, text="Save png", command=save_to_png)
-save_button.pack(padx=10, pady=10)
+# # Save Image
+# save_button = Button(options_frame, text="Save png", command=save_to_png)
+# save_button.pack(padx=10, pady=10)
 
-# Repeat the actions
+# Top Menu widget
+option_menu = Menu(root)
+
+# file menu
+file_menu = Menu(option_menu)
+
+# svae menu >>> start
+file_menu.add_command(label='Save as png', command=save_to_png)
+# save menu <<< end
+# clear menu >>> start
+file_menu.add_command(label='Clear', command=clear_screen)
+# clear menu <<< end
+
+# colors menu
+color_menu = Menu(option_menu)
+
+# canvas color menu >>> start
+color_menu.add_command(label='Brush Color', command=change_brush_color)
+# canvas color menu <<< stop
+
+# brush color menu >>> start
+color_menu.add_command(label='Canvas Color', command=change_canvas_color)
+# brush color menu <<< stop
+
+option_menu.add_cascade(label='File', menu=file_menu)
+option_menu.add_cascade(label='Colors', menu=color_menu)
+option_menu.add_command(label='Exit', command=exit_pyPaint)
+root.config(menu=option_menu)
+
+# starting point
 root.mainloop()
+""" testing code
+menu = Menu(window) 
+new_item = Menu(menu) 
+new_item.add_command(label='New', command = clicked) 
+menu.add_cascade(label='File', menu=new_item) 
+window.config(menu=menu)
+ """
