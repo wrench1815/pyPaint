@@ -79,4 +79,4 @@ pyinstaller --onefile --windowed --cleanmain.py --name pyPaint-vx.x --clean
 
 # License
 
-This Project is Licensed **Unlicensed**. It means You are free to do whatever you want with the code and use wherever you want to.
+This Project is Licensed [**Unlicensed**](https://github.com/wrench1815/pyPaint/blob/master/LICENSE). It means You are free to do whatever you want with the code and use wherever you want to.
