@@ -6,7 +6,7 @@ File : main.py
 
 from tkinter import *
 import tkinter.ttk as ttk
-from tkinter import colorchooser as cs
+from tkinter import colorchooser as colch
 from tkinter import filedialog as fd
 from tkinter import messagebox
 import os
@@ -15,6 +15,7 @@ import PIL
 
 root = Tk()
 root.title("pyPaint")
+root.iconbitmap('icon/pyPaint.ico')
 root.minsize(800, 700)
 # root.geometry('800x700')
 
@@ -49,13 +50,15 @@ def change_brush_size(pos_return):
 def change_brush_color():
     global brush_color
     brush_color = "black"
-    brush_color = cs.askcolor(color=brush_color)[1]
+    brush_color = colch.askcolor(title='Choose Brush Color',
+                                 color=brush_color)[1]
 
 
 # Change Canvas Color
 def change_canvas_color():
     canvas_color = "black"
-    canvas_color = cs.askcolor(color=canvas_color)[1]
+    canvas_color = colch.askcolor(title='Choose Canvas Color',
+                                  color=canvas_color)[1]
     root_canvas.config(bg=canvas_color)
 
 
@@ -175,33 +178,56 @@ brush_type_radio3.pack(anchor=W)
 # save_button.pack(padx=10, pady=10)
 
 # Top Menu widget
-option_menu = Menu(root)
+# option_menu = Menu(root)
 
 # file menu
-file_menu = Menu(option_menu)
+# file_menu = Menu(option_menu)
 
-# svae menu >>> start
-file_menu.add_command(label='Save as png', command=save_to_png)
+# save menu >>> start
+# file_menu.add_command(label='Save as png', command=save_to_png)
 # save menu <<< end
 # clear menu >>> start
-file_menu.add_command(label='Clear', command=clear_screen)
+# file_menu.add_command(label='Clear', command=clear_screen)
 # clear menu <<< end
 
 # colors menu
-color_menu = Menu(option_menu)
+# color_menu = Menu(option_menu)
 
 # canvas color menu >>> start
-color_menu.add_command(label='Brush Color', command=change_brush_color)
+# color_menu.add_command(label='Brush Color', command=change_brush_color)
 # canvas color menu <<< stop
 
 # brush color menu >>> start
-color_menu.add_command(label='Canvas Color', command=change_canvas_color)
+# color_menu.add_command(label='Canvas Color', command=change_canvas_color)
 # brush color menu <<< stop
 
-option_menu.add_cascade(label='File', menu=file_menu)
-option_menu.add_cascade(label='Colors', menu=color_menu)
-option_menu.add_command(label='Exit', command=exit_pyPaint)
-root.config(menu=option_menu)
+# option_menu.add_cascade(label='File', menu=file_menu)
+# option_menu.add_cascade(label='Colors', menu=color_menu)
+# option_menu.add_command(label='Exit', command=exit_pyPaint)
+# root.config(menu=option_menu)
+
+top_menu = Menu(root)
+
+# File Menu
+file_menu = Menu(top_menu)
+# Save Canvas Drwaing to png
+file_menu.add_command(label='Save as png', command=save_to_png)
+# Clear Screen
+file_menu.add_command(label='Clear', command=clear_screen)
+
+# Color Menu
+color_menu = Menu(top_menu)
+# Canvas Color Command
+color_menu.add_command(label='Canvas Color', command=change_canvas_color)
+# Brush Color Command
+color_menu.add_command(label='Brush Color', command=change_brush_color)
+
+top_menu.add_cascade(label='File', menu=file_menu)
+top_menu.add_command(label='Brush Color', command=change_brush_color)
+top_menu.add_command(label='Canvas Color', command=change_canvas_color)
+# top_menu.add_cascade(label='Colors', menu=color_menu)
+top_menu.add_command(label='Exit', command=exit_pyPaint)
+root.config(menu=top_menu)
 
 # starting point
 root.mainloop()
