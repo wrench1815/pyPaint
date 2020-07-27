@@ -177,35 +177,6 @@ brush_type_radio3.pack(anchor=W)
 # save_button = Button(options_frame, text="Save png", command=save_to_png)
 # save_button.pack(padx=10, pady=10)
 
-# Top Menu widget
-# option_menu = Menu(root)
-
-# file menu
-# file_menu = Menu(option_menu)
-
-# save menu >>> start
-# file_menu.add_command(label='Save as png', command=save_to_png)
-# save menu <<< end
-# clear menu >>> start
-# file_menu.add_command(label='Clear', command=clear_screen)
-# clear menu <<< end
-
-# colors menu
-# color_menu = Menu(option_menu)
-
-# canvas color menu >>> start
-# color_menu.add_command(label='Brush Color', command=change_brush_color)
-# canvas color menu <<< stop
-
-# brush color menu >>> start
-# color_menu.add_command(label='Canvas Color', command=change_canvas_color)
-# brush color menu <<< stop
-
-# option_menu.add_cascade(label='File', menu=file_menu)
-# option_menu.add_cascade(label='Colors', menu=color_menu)
-# option_menu.add_command(label='Exit', command=exit_pyPaint)
-# root.config(menu=option_menu)
-
 top_menu = Menu(root)
 
 # File Menu
