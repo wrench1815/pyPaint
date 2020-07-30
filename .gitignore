@@ -1,7 +1,6 @@
 # Ignore Project Data Folders
 /py_modules
 /.vscode
-/.idea
 /__pycache__
 /build
 /dist
